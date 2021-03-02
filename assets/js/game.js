@@ -17,6 +17,7 @@ var fight = function() {
 var promptFight = window.prompt("would you like to FIGHT or SKIP this battle? enter 'FIGHT' or 'SKIP' to choose.");
 console.log(promptFight);
 
+
 // if player choses to fight, then fight
 if (promptFight === "fight" || promptFight === "FIGHT") {
     // remove enemy's health by subtracting the amount set in the playerAttack variable
@@ -58,8 +59,34 @@ if (promptFight === "fight" || promptFight === "FIGHT") {
     }
     // if no (false), ask question again by running fight() again
     else {
-      fight();
+    
     }
   }
 }
+
+var startGame = function() {
+  //reset player stats
+  playerHealth = 100;
+  playerAttack = 10;
+  playerMoney = 10;
+
+  for (var i = 0; i < enemyName.length; i++) {
+    if (playerHealth > 0) {
+      window.alert("Welcome to Robot Gladiators ROUND " + (i + 1));
+
+      var pickedEnemyName = enemyName[i];
+
+      enemyHealth = 50;
+
+      fight(pickedEnemyName);
+    }
+    else {
+      window.alert("You have lost your roboth in battle! GAME OVER!");
+      break;
+    }
+  }
+};
+
+//start the game when the page loads
+startGame();
 fight();
